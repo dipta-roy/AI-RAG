@@ -15,7 +15,7 @@ This project shows how to connect an information retrieval pipeline with a Large
 
 ```
 AI-RAG/
-│── documents/
+│── documents/			# To store all the uploaded documents
 │── app.py              # Main Streamlit app (user + admin UI)
 │── gen.py              # Script to generate and hash admin password
 │── rag_utils.py        # Utilities for text chunking, embeddings, and RAG pipeline
@@ -90,7 +90,13 @@ AI-RAG/
      ```
    * Copy the generated **hashed password** and paste it into `credentials.toml`.
 
-6. **Run the application**
+6. **Create documents folder**
+	
+	```bash
+	mkdir documents
+	```
+	
+7. **Run the application**
 
    ```bash
    streamlit run app.py
