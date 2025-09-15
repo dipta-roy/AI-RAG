@@ -1,0 +1,4 @@
+{
+    "generation_model": "gemma3:latest",
+    "embedding_model": "nomic-embed-text"
+}
