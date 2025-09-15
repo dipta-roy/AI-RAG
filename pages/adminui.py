@@ -60,11 +60,20 @@ elif auth_status:
     # -------------------- Header --------------------
     st.title("RAG Admin Panel")
     st.markdown("---")
+
+    # View Logs button
     if st.button("View Logs"):
         if os.path.exists(os.path.join(BASE_DIR, "logs.py")):
-            st.experimental_set_query_params(page="logs")
+            st.query_params(page="logs")
         else:
             st.warning("Logs page not found.")
+
+    # View Metrics button (new)
+    if st.button("View Metrics"):
+        if os.path.exists(os.path.join(BASE_DIR, "metricsui.py")):
+            st.query_params(page="metricsui")
+        else:
+            st.warning("Metrics page not found.")
 
     # -------------------- Document Upload --------------------
     st.subheader("Upload & Ingest Documents")
@@ -120,7 +129,6 @@ elif auth_status:
     else:
         model_config = {"generation_model": "gemma2:9b", "embedding_model": "nomic-embed-text"}
 
-    # Dynamic generation model dropdown
     installed_models = get_installed_ollama_models()
     if not installed_models:
         installed_models = ["gemma2:9b"]  # fallback
@@ -135,7 +143,6 @@ elif auth_status:
         index=installed_models.index(current_gen_model)
     )
 
-    # Embedding model dropdown (static list)
     emb_options = ["nomic-embed-text", "mxbai-embed-large"]
     current_emb_model = model_config.get("embedding_model", emb_options[0])
     if current_emb_model not in emb_options:

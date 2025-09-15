@@ -6,3 +6,6 @@ chromadb
 pypdf
 streamlit
 streamlit-authenticator
+unstructured
+unstructured[pdf]
+langchain_experimental
